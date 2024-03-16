@@ -30,3 +30,12 @@ print(repr(arr3), arr3.dtype)
 
 arr4 = arr3.astype(np.float32)
 print(repr(arr4), arr4.dtype)
+
+arr5 = np.array([np.nan, 1, 2])
+print(repr(arr5))
+
+arr6 = np.array([np.nan, 'abc'])
+print(repr(arr6))
+
+#np.array([np.nan, 1, 2], dtype=np.int32) # ValueError => cannot convert float NaN to integer
+np.array([np.nan, 1, 2], dtype=np.float32)
