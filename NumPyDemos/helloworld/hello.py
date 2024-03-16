@@ -39,3 +39,21 @@ print(repr(arr6))
 
 #np.array([np.nan, 1, 2], dtype=np.int32) # ValueError => cannot convert float NaN to integer
 np.array([np.nan, 1, 2], dtype=np.float32)
+
+
+def show_infinity():
+    print(np.inf)
+    print(-np.inf)
+
+    print(np.inf > 1000000)
+
+    arr = np.array([np.inf, 5])
+    print(repr(arr))
+
+    arr = np.array([-np.inf, 1])
+    print(repr(arr))
+
+    # np.array([np.inf, 3], dtype=np.int32) # ValueError => cannot convert float inf to integer
+    np.array([np.inf, 3], dtype=np.float32)
+
+show_infinity()
