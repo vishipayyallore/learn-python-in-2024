@@ -2,89 +2,54 @@ import numpy as np  # import the NumPy library
 
 # NumPy arrays are basically just Python lists with added features.
 # dtype is optional. https://numpy.org/doc/stable/user/basics.types.html
+# Ranged data = The function acts very similar to the range function in Python, and will always return a 1-D array.
+# Like np.array, np.arange performs upcasting. It also has the dtype keyword argument to manually cast the array.
 
 
-def show_numpy_hw():
-    print('\nShow NumPy Hello World')
-    # Initializing a NumPy array
-    arr = np.array([-1, 2, 5], dtype=np.float32)
-    print('Single Dimension Array: ', repr(arr))
+def print_numpy_data(data):
+    print('Data: ', data, 'Repr: ', repr(data), 'Type: ', data.dtype)
 
 
-def show_numpy_matrix():
-    print('\nShowing NumPy Matrix')
+def show_numpy_ranged_data():
+    print('\nShow numpy ranged data')
 
-    arr1 = np.array([[0, 1, 2], [3, 4, 5]], dtype=np.float32)
-    print('Double Dimension Array: ', repr(arr1))
+    # If only a single number, n, is passed in as an argument, np.arange will return an array with all the integers in the range [0, n). Note: the lower end is inclusive while the upper end is exclusive.
+    print_numpy_data(np.arange(10))  # 0 to 9, step 1
+    print_numpy_data(np.arange(5))  # 0 to 4, step 1
+    print_numpy_data(np.arange(5.1))  # 0 to 5, step 1
 
-    # When the elements of a NumPy array are mixed types, then the array's type will be upcast to the highest level type.
-    arr2 = np.array([0, 0.1, 2])
-    print('Single Dimension Array: ', repr(arr2))
+    # If two numbers, m and n, are passed in, np.arange will return an array with all the integers in the range [m, n).
+    print_numpy_data(np.arange(2, 10))  # 2 to 9, step 1
+    print_numpy_data(np.arange(-1, 4))  # -1 to 3, step 1
+    print_numpy_data(np.arange(-1.5, 4, 2))  # -1.5 to 2.5, step 2
 
+    # If three numbers, m, n, and s, are passed in, np.arange will return an array with all the integers in the range [m, n) using a step size of s.
+    print_numpy_data(np.arange(0, 10, 1))  # 0 to 9
+    print_numpy_data(np.arange(0, 10, 2))  # 0 to 8, step 2
+    print_numpy_data(np.arange(0, 10, 3))  # 0 to 9, step 3
+    print_numpy_data(np.arange(10, 0, -1))  # 10 to 1, step -1
+    print_numpy_data(np.arange(10, 0, -2))  # 10 to 2, step -2
+    print_numpy_data(np.arange(10, 0, -3))  # 10 to 1, step -3
 
-def show_numpy_array_copy():
-    print('\nShow NumPy Array Copying')
+def show_numpy_linspace_data():
+    print('\nShow numpy linspace data')
 
-    a = np.array([0, 1])
-    b = np.array([9, 8])
-    c = a
-    print('Array a: {}'.format(repr(a)))
-    c[0] = 5
-    print('Array a: {}'.format(repr(a)))
+    # np.linspace is similar to np.arange, but instead of specifying the step size, the number of elements in the array is specified.
+    # The first two arguments are the start and end of the range, and the third argument is the number of elements in the array.
 
-    d = b.copy()
-    d[0] = 6
-    print('Array b: {}'.format(repr(b)))
+    print_numpy_data(np.linspace(5, 11, num=3))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=5))  # 5 to 11, 4 elements
 
+    print_numpy_data(np.linspace(5, 11, num=4, endpoint=False))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4, dtype=np.int32)) # 5 to 11, 4 elements
 
-def show_numpy_array_casting():
-    print('\nShow NumPy Array Casting')
+    print_numpy_data(np.linspace(0, 10, 5))  # 0 to 10, 5 elements
+    print_numpy_data(np.linspace(0, 10, 6))  # 0 to 10, 6 elements
+    print_numpy_data(np.linspace(0, 10, 11))  # 0 to 10, 11 elements
+    print_numpy_data(np.linspace(0, 10, 12))  # 0 to 10, 12 elements
+    print_numpy_data(np.linspace(0, 10, 13))  # 0 to 10, 13 elements
 
-    arr3 = np.array([10, 11, 12])
-    print(repr(arr3), arr3.dtype)
+show_numpy_ranged_data()
 
-    arr4 = arr3.astype(np.float32)
-    print(repr(arr4), arr4.dtype)
-
-
-def show_numpy_array_nan():
-    print('\nShow NumPy Array NaN')
-
-    arr5 = np.array([np.nan, 1, 2])
-    print(repr(arr5))
-
-    arr6 = np.array([np.nan, 'abc'])
-    print(repr(arr6))
-
-    # np.array([np.nan, 1, 2], dtype=np.int32) # ValueError => cannot convert float NaN to integer
-    np.array([np.nan, 1, 2], dtype=np.float32)
-
-
-def show_infinity():
-    print('\nShowing Infinity')
-    print(np.inf)
-    print(-np.inf)
-
-    print(np.inf > 1000000)
-
-    arr = np.array([np.inf, 5])
-    print(repr(arr))
-
-    arr = np.array([-np.inf, 1])
-    print(repr(arr))
-
-    # np.array([np.inf, 3], dtype=np.int32) # ValueError => cannot convert float inf to integer
-    np.array([np.inf, 3], dtype=np.float32)
-
-
-show_numpy_hw()
-
-show_numpy_matrix()
-
-show_numpy_array_copy()
-
-show_numpy_array_casting()
-
-show_numpy_array_nan()
-
-show_infinity()
+show_numpy_linspace_data()
