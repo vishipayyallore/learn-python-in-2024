@@ -31,6 +31,7 @@ def show_numpy_ranged_data():
     print_numpy_data(np.arange(10, 0, -2))  # 10 to 2, step -2
     print_numpy_data(np.arange(10, 0, -3))  # 10 to 1, step -3
 
+
 def show_numpy_linspace_data():
     print('\nShow numpy linspace data')
 
@@ -41,8 +42,10 @@ def show_numpy_linspace_data():
     print_numpy_data(np.linspace(5, 11, num=4))  # 5 to 11, 4 elements
     print_numpy_data(np.linspace(5, 11, num=5))  # 5 to 11, 4 elements
 
-    print_numpy_data(np.linspace(5, 11, num=4, endpoint=False))  # 5 to 11, 4 elements
-    print_numpy_data(np.linspace(5, 11, num=4, dtype=np.int32)) # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4, endpoint=False)
+                     )  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4, dtype=np.int32)
+                     )  # 5 to 11, 4 elements
 
     print_numpy_data(np.linspace(0, 10, 5))  # 0 to 10, 5 elements
     print_numpy_data(np.linspace(0, 10, 6))  # 0 to 10, 6 elements
@@ -50,6 +53,67 @@ def show_numpy_linspace_data():
     print_numpy_data(np.linspace(0, 10, 12))  # 0 to 10, 12 elements
     print_numpy_data(np.linspace(0, 10, 13))  # 0 to 10, 13 elements
 
+
+def show_numpy_reshaping_data():
+    print('\nShow numpy reshaping data')
+
+    # np.reshape is used to change the shape of an array. The array to be reshaped is passed in as the first argument, and the new shape is passed in as the second argument.
+    # The new shape must have the same number of elements as the original shape. The new shape can be passed in as a tuple or as a series of numbers.
+
+    # Reshape 1D to 2D
+    data = np.arange(6)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(2, 3))
+    print_numpy_data(data.reshape((2, 3)))
+
+    # Reshape 2D to 1D
+    data = np.arange(6).reshape(2, 3)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(6))
+    print_numpy_data(data.reshape((6)))
+
+    # Reshape 1D to 3D
+    data = np.arange(24)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(2, 3, 4))
+    print_numpy_data(data.reshape((2, 3, 4)))
+
+    # Reshape 3D to 1D
+    data = np.arange(24).reshape(2, 3, 4)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(24))
+    print_numpy_data(data.reshape((24)))
+
+    # Reshape 2D to 3D
+    data = np.arange(24).reshape(4, 6)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(2, 3, 4))
+    print_numpy_data(data.reshape((2, 3, 4)))
+
+    # Reshape 3D to 2D
+    data = np.arange(24).reshape(2, 3, 4)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(4, 6))
+    print_numpy_data(data.reshape((4, 6)))
+
+    # Reshape 2D to 3D
+    data = np.arange(24).reshape(4, 6)
+    print_numpy_data(data)
+    print_numpy_data(data.reshape(2, 3, 4))
+    print_numpy_data(data.reshape((2, 3, 4)))
+
+    arr = np.arange(8)
+    reshaped_arr = np.reshape(arr, (2, 4))
+    print_numpy_data(reshaped_arr)
+    print('New shape: {}'.format(reshaped_arr.shape))
+
+    reshaped_arr = np.reshape(arr, (-1, 2, 2))
+    print_numpy_data(reshaped_arr)
+    print('New shape: {}'.format(reshaped_arr.shape))
+
+
 show_numpy_ranged_data()
 
 show_numpy_linspace_data()
+
+show_numpy_reshaping_data()
