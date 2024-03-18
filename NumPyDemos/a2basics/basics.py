@@ -1,0 +1,55 @@
+import numpy as np  # import the NumPy library
+
+# NumPy arrays are basically just Python lists with added features.
+# dtype is optional. https://numpy.org/doc/stable/user/basics.types.html
+# Ranged data = The function acts very similar to the range function in Python, and will always return a 1-D array.
+# Like np.array, np.arange performs upcasting. It also has the dtype keyword argument to manually cast the array.
+
+
+def print_numpy_data(data):
+    print('Data: ', data, 'Repr: ', repr(data), 'Type: ', data.dtype)
+
+
+def show_numpy_ranged_data():
+    print('\nShow numpy ranged data')
+
+    # If only a single number, n, is passed in as an argument, np.arange will return an array with all the integers in the range [0, n). Note: the lower end is inclusive while the upper end is exclusive.
+    print_numpy_data(np.arange(10))  # 0 to 9, step 1
+    print_numpy_data(np.arange(5))  # 0 to 4, step 1
+    print_numpy_data(np.arange(5.1))  # 0 to 5, step 1
+
+    # If two numbers, m and n, are passed in, np.arange will return an array with all the integers in the range [m, n).
+    print_numpy_data(np.arange(2, 10))  # 2 to 9, step 1
+    print_numpy_data(np.arange(-1, 4))  # -1 to 3, step 1
+    print_numpy_data(np.arange(-1.5, 4, 2))  # -1.5 to 2.5, step 2
+
+    # If three numbers, m, n, and s, are passed in, np.arange will return an array with all the integers in the range [m, n) using a step size of s.
+    print_numpy_data(np.arange(0, 10, 1))  # 0 to 9
+    print_numpy_data(np.arange(0, 10, 2))  # 0 to 8, step 2
+    print_numpy_data(np.arange(0, 10, 3))  # 0 to 9, step 3
+    print_numpy_data(np.arange(10, 0, -1))  # 10 to 1, step -1
+    print_numpy_data(np.arange(10, 0, -2))  # 10 to 2, step -2
+    print_numpy_data(np.arange(10, 0, -3))  # 10 to 1, step -3
+
+def show_numpy_linspace_data():
+    print('\nShow numpy linspace data')
+
+    # np.linspace is similar to np.arange, but instead of specifying the step size, the number of elements in the array is specified.
+    # The first two arguments are the start and end of the range, and the third argument is the number of elements in the array.
+
+    print_numpy_data(np.linspace(5, 11, num=3))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=5))  # 5 to 11, 4 elements
+
+    print_numpy_data(np.linspace(5, 11, num=4, endpoint=False))  # 5 to 11, 4 elements
+    print_numpy_data(np.linspace(5, 11, num=4, dtype=np.int32)) # 5 to 11, 4 elements
+
+    print_numpy_data(np.linspace(0, 10, 5))  # 0 to 10, 5 elements
+    print_numpy_data(np.linspace(0, 10, 6))  # 0 to 10, 6 elements
+    print_numpy_data(np.linspace(0, 10, 11))  # 0 to 10, 11 elements
+    print_numpy_data(np.linspace(0, 10, 12))  # 0 to 10, 12 elements
+    print_numpy_data(np.linspace(0, 10, 13))  # 0 to 10, 13 elements
+
+show_numpy_ranged_data()
+
+show_numpy_linspace_data()
